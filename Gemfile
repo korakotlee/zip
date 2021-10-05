@@ -56,3 +56,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "rspec-rails", "~> 5.0"
+
+gem "rexml", "~> 3.2"
+
+gem "faraday", "~> 1.8"
