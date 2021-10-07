@@ -17,7 +17,7 @@ describe ZipCodeEndpoint, type: :model do
       expect(@zips_api.length).to be > 0
     end
     partner_clinics = ZipCodeEndpoint.send(:extract_zip_codes_from_db, @zips_api["zip_codes"]).to_a
-    expect(partner_clinics.length).to eq(3)
+    expect(partner_clinics.length).to eq(4)
   end
 
   it "get zip codes and sort" do
@@ -26,6 +26,6 @@ describe ZipCodeEndpoint, type: :model do
     end
     puts "\n\n"
     puts @out
-    expect(@out.map {|r| r[:name]}).to eq(["Clinic 1", "Clinic 3", "Clinic 2"])
+    expect(@out.map {|r| r[:name]}).to eq(["Clinic 4", "Clinic 1", "Clinic 3", "Clinic 2"])
   end
 end

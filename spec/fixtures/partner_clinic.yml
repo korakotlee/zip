@@ -25,3 +25,12 @@ clinic_3:
     contact_email: "a@example.com"
     contact_name: "contact_name"
     zipcode: "85020"
+clinic_4:
+    name: "Clinic 4"
+    address: "address"
+    city: "city"
+    state: "AZ"
+    tier: "A"
+    contact_email: "a@example.com"
+    contact_name: "contact_name"
+    zipcode: "85020"
