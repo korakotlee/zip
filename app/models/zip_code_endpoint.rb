@@ -10,24 +10,15 @@ class ZipCodeEndpoint
       # 2. find all ZIP codes in the DB that match the response, and sort by tier ASC
       zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
       # 3. Sort ZIP codes in the same tier by distance
-      puts "ZipCodeEndpoint"
-      n = 1000
-      bm = Benchmark.realtime {
-        n.times do
-          zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
-          sort_extracted_zips_from_db_by_distance(zips_api["zip_codes_with_distance"], zips_db)
-        end
-      }
-      puts "*** benchmark 1: #{bm}"
+      sort_extracted_zips_from_db_by_distance(zips_api["zip_codes_with_distance"], zips_db)
+      format_response(zips_db, zips_api["zip_codes_with_distance"])
+    end
 
-      bm = Benchmark.realtime {
-        n.times do
-          zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
-          sort1(zips_api["zip_codes_with_distance"], zips_db)
-        end
-      }
-      puts "*** benchmark 2: #{bm}"
-
+    def get_zip_in_radius1(zipcode, radius, units = "mile")
+      zips_api = extract_zip_codes_from_api(zipcode, radius, units)
+      return [] unless zips_api
+      zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
+      sort1(zips_api["zip_codes_with_distance"], zips_db)
       format_response(zips_db, zips_api["zip_codes_with_distance"])
     end
 
