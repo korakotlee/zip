@@ -1,0 +1,2 @@
+class PartnerClinic < ApplicationRecord
+end
