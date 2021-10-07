@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.zipcodeapi.com/rest/OPZ5C46YqxIfKbeJK4hDQwkzYn7T0743vSrXn4cBZR4vuo9lX9JEiwSVwwr37YGN/radius.json/85022/5/mile
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 07 Oct 2021 10:10:22 GMT
+      Server:
+      - Apache/2.4.48 () OpenSSL/1.0.2k-fips
+      X-Powered-By:
+      - PHP/7.4.21
+      Upgrade:
+      - h2,h2c
+      Connection:
+      - Upgrade
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '186'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"zip_codes":[{"zip_code":"85020","distance":4.147,"city":"Phoenix","state":"AZ"},{"zip_code":"85028","distance":4.224,"city":"Phoenix","state":"AZ"},{"zip_code":"85071","distance":4.393,"city":"Phoenix","state":"AZ"},{"zip_code":"85029","distance":4.209,"city":"Phoenix","state":"AZ"},{"zip_code":"85046","distance":2.814,"city":"Phoenix","state":"AZ"},{"zip_code":"85078","distance":2.814,"city":"Phoenix","state":"AZ"},{"zip_code":"85032","distance":2.639,"city":"Phoenix","state":"AZ"},{"zip_code":"85022","distance":0,"city":"Phoenix","state":"AZ"},{"zip_code":"85053","distance":4.816,"city":"Phoenix","state":"AZ"},{"zip_code":"85080","distance":3.565,"city":"Phoenix","state":"AZ"},{"zip_code":"85023","distance":2.614,"city":"Phoenix","state":"AZ"},{"zip_code":"85068","distance":3.033,"city":"Phoenix","state":"AZ"},{"zip_code":"85027","distance":4.429,"city":"Phoenix","state":"AZ"}]}'
+  recorded_at: Thu, 07 Oct 2021 10:10:22 GMT
+recorded_with: VCR 6.0.0

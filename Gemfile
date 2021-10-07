@@ -50,6 +50,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  gem "vcr", "~> 6.0"
+  gem "webmock", "~> 3.14"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -60,3 +63,4 @@ gem "rspec-rails", "~> 5.0"
 gem "rexml", "~> 3.2"
 
 gem "faraday", "~> 1.8"
+
