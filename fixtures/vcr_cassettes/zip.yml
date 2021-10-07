@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://www.zipcodeapi.com/rest/OPZ5C46YqxIfKbeJK4hDQwkzYn7T0743vSrXn4cBZR4vuo9lX9JEiwSVwwr37YGN/radius.json/85022/5/mile
+    uri: https://www.zipcodeapi.com/rest/123/radius.json/85022/5/mile
     body:
       encoding: UTF-8
       string: ''

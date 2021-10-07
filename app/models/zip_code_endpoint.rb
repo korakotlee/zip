@@ -1,5 +1,5 @@
-ZIP_CODE_API_KEY = "OPZ5C46YqxIfKbeJK4hDQwkzYn7T0743vSrXn4cBZR4vuo9lX9JEiwSVwwr37YGN"
-require 'benchmark'
+ZIP_CODE_API_KEY = "123"
+require "benchmark"
 
 class ZipCodeEndpoint
   class << self
@@ -11,19 +11,24 @@ class ZipCodeEndpoint
       zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
       # 3. Sort ZIP codes in the same tier by distance
       puts "ZipCodeEndpoint"
-      bm = Benchmark.realtime { 
-        sort_extracted_zips_from_db_by_distance(zips_api["zip_codes_with_distance"], zips_db) 
+      n = 1000
+      bm = Benchmark.realtime {
+        n.times do
+          zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
+          sort_extracted_zips_from_db_by_distance(zips_api["zip_codes_with_distance"], zips_db)
+        end
       }
       puts "*** benchmark 1: #{bm}"
 
-      zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
-      bm = Benchmark.realtime { 
-        sort1(zips_api["zip_codes_with_distance"], zips_db) 
+      bm = Benchmark.realtime {
+        n.times do
+          zips_db = extract_zip_codes_from_db(zips_api["zip_codes"]).to_a
+          sort1(zips_api["zip_codes_with_distance"], zips_db)
+        end
       }
       puts "*** benchmark 2: #{bm}"
 
-
-      format_response(zips_db, zips_api['zip_codes_with_distance'])
+      format_response(zips_db, zips_api["zip_codes_with_distance"])
     end
 
     private
@@ -64,7 +69,7 @@ class ZipCodeEndpoint
     end
 
     def sort1(zip_codes_with_distance, zips_db)
-      zips_db.sort! {|a ,b| 
+      zips_db.sort! { |a, b|
         [a.tier, zip_codes_with_distance[a.zipcode]] <=> [b.tier, zip_codes_with_distance[b.zipcode]]
       }
     end
@@ -80,7 +85,7 @@ class ZipCodeEndpoint
           distance: zip_codes_with_distance[item.zipcode],
           tier: item.tier,
           contact_email: item.contact_email,
-          contact_name: item.contact_name
+          contact_name: item.contact_name,
         }
         response.push(tmp_item)
       end

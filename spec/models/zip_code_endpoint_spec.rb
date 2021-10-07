@@ -12,12 +12,11 @@ describe ZipCodeEndpoint, type: :model do
     @radius = 5
   end
   it "get zip code form api" do
-    zips_api = []
     VCR.use_cassette("zip") do
-      zips_api = ZipCodeEndpoint.send(:extract_zip_codes_from_api, @zipcode, @radius, "mile")
-      expect(zips_api.length).to be > 0
+      @zips_api = ZipCodeEndpoint.send(:extract_zip_codes_from_api, @zipcode, @radius, "mile")
+      expect(@zips_api.length).to be > 0
     end
-    partner_clinics = ZipCodeEndpoint.send(:extract_zip_codes_from_db, zips_api["zip_codes"]).to_a
+    partner_clinics = ZipCodeEndpoint.send(:extract_zip_codes_from_db, @zips_api["zip_codes"]).to_a
     expect(partner_clinics.length).to eq(3)
   end
 
@@ -25,6 +24,8 @@ describe ZipCodeEndpoint, type: :model do
     VCR.use_cassette("zip") do
       @out = ZipCodeEndpoint.get_zip_in_radius(@zipcode, @radius, "mile")
     end
+    puts "\n\n"
+    puts @out
     expect(@out.map {|r| r[:name]}).to eq(["Clinic 1", "Clinic 3", "Clinic 2"])
   end
 end
